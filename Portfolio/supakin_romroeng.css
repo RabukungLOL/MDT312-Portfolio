@@ -1,0 +1,656 @@
+/* ==========================================================================
+   1. CSS Variables & Reset (Week 2)
+   ========================================================================== */
+:root {
+    --primary-color: #0ea5e9;
+    /* ฟ้าสดใส (Sky Blue) */
+    --primary-hover: #0284c7;
+    /* ฟ้าเข้มเวลา Hover */
+    --bg-color: #f1f5f9;
+    /* พื้นหลังหน้าเว็บสีเทาอ่อน สบายตา */
+    --card-bg: #ffffff;
+    /* การ์ดสีขาว */
+    --text-primary: #1e293b;
+    /* สีข้อความหลักเข้มๆ แต่อ่อนกว่าดำ */
+    --text-secondary: #64748b;
+    /* สีข้อความรอง */
+    --border-color: #cbd5e1;
+    /* ขอบสีเทาอ่อน */
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+
+    --transition: all 0.3s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* เอา Google Font ออก ใช้ฟอนต์พื้นฐานของระบบแทน */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, Tahoma, "Thonburi", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ==========================================================================
+   2. Navbar
+   ========================================================================== */
+.navbar-header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary-hover);
+}
+
+.nav-btn {
+    background-color: var(--primary-color);
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 50px;
+    /* ปุ่มโค้งมน */
+}
+
+.nav-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   3. Hero Section (หน้า Index)
+   ========================================================================== */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 0 50px;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.badge {
+    display: inline-block;
+    background-color: #e0f2fe;
+    color: var(--primary-hover);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.hero-desc {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.info-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-card {
+    background: var(--card-bg);
+    padding: 15px 20px;
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary-color);
+    /* เน้นแถบสีซ้ายมือ */
+    box-shadow: var(--shadow-sm);
+}
+
+.info-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 3px;
+}
+
+.info-value {
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.info-value.link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.info-value.link:hover {
+    text-decoration: underline;
+}
+
+.hero-image-wrapper {
+    flex-shrink: 0;
+}
+
+.hero-img {
+    width: 350px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 5px solid white;
+    transition: var(--transition);
+}
+
+.hero-img:hover {
+    transform: rotate(2deg) scale(1.02);
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+    margin: 40px 0;
+}
+
+/* ==========================================================================
+   4. Sections & Grid Cards (หน้า Index)
+   ========================================================================== */
+.section {
+    padding: 40px 0;
+}
+
+.section-title-wrapper {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    border-bottom: 3px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.section-subtitle {
+    margin-top: 10px;
+    color: var(--text-secondary);
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card-tag {
+    display: inline-block;
+    background: #e0f2fe;
+    color: var(--primary-hover);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Assignment Grid */
+.assignment-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.assignment-item {
+    display: block;
+    background-color: var(--card-bg);
+    text-align: center;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--primary-hover);
+    font-weight: bold;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.assignment-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   4.1 Assignment Grid (ปุ่มน่ารักๆ)
+   ========================================================================== */
+.assignment-grid {
+    display: grid;
+    /* จัดเป็นตาราง: คอมพิวเตอร์โชว์แถวละ 3, มือถือโชว์แถวละ 1-2 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.assignment-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    padding: 16px 24px;
+    border-radius: var(--radius-lg);
+    /* มุมโค้งมนน่ารัก */
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: bold;
+    font-size: 1.05rem;
+
+    /* Box Model & Border */
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 4px 0 #cbd5e1;
+    /* เงาแบบแข็ง (Hard Shadow) สไตล์ปุ่มเกม/น่ารัก */
+
+    /* Transition สำหรับความนุ่มนวล */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* เอฟเฟกต์เมื่อเอาเมาส์ชี้ (Hover) */
+.assignment-btn:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 0 var(--primary-hover);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    /* ลอยขึ้นนิดหน่อย */
+}
+
+/* เอฟเฟกต์เมื่อกดปุ่ม (Active) */
+.assignment-btn:active {
+    transform: translateY(4px);
+    /* ปุ่มยุบลงไปตามเงา */
+    box-shadow: 0 0 0 transparent;
+    /* เงาหายไป */
+}
+
+/* ไอคอนอีโมจิในปุ่ม */
+.btn-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    background-color: #f1f5f9;
+    width: 45px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* ไอคอนอยู่ในวงกลม */
+    transition: transform 0.3s ease;
+}
+
+.assignment-btn:hover .btn-icon {
+    transform: scale(1.15) rotate(5deg);
+    /* ซูมและเอียงไอคอนเมื่อชี้เมาส์ */
+    background-color: #e0f2fe;
+    /* เปลี่ยนสีพื้นหลังวงกลม */
+}
+
+/* ==========================================================================
+   5. Contact Section (ออกแบบให้เป็นระเบียบและสวยงาม)
+   ========================================================================== */
+.contact-section {
+    text-align: center;
+    background-color: white;
+    padding: 50px 20px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin: 40px 0;
+}
+
+.contact-section .section-title {
+    border-bottom: none;
+    /* เอาเส้นใต้ของ Contact ออก */
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 35px;
+    border-radius: 50px;
+    /* ปุ่มโค้งมนแบบ Pill */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    min-width: 180px;
+}
+
+.social-btn.facebook {
+    background-color: #1877F2;
+}
+
+.social-btn.facebook:hover {
+    background-color: #1664cc;
+    box-shadow: 0 10px 20px rgba(24, 119, 242, 0.4);
+}
+
+.social-btn.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-btn.instagram:hover {
+    box-shadow: 0 10px 20px rgba(220, 39, 67, 0.4);
+}
+
+.social-btn.email {
+    background-color: var(--text-primary);
+}
+
+.social-btn.email:hover {
+    background-color: black;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.social-btn:hover {
+    transform: translateY(-5px);
+}
+
+/* ==========================================================================
+   6. Project Gallery (หน้า project.html) 
+   ========================================================================== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.gallery-item {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    /* ไม่ให้รูปทะลุกรอบ */
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    /* ให้รูปเต็มกรอบโดยไม่ผิดสัดส่วน */
+    border-bottom: 1px solid var(--border-color);
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+    /* ซูมรูปตอนชี้เมาส์ */
+}
+
+.gallery-info {
+    padding: 20px;
+    flex-grow: 1;
+    /* ดันเนื้อหาให้เต็มกล่อง */
+    background: white;
+    z-index: 1;
+    /* ให้อยู่เหนือรูปที่ซูม */
+}
+
+.gallery-info h3 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.gallery-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   7. Footer
+   ========================================================================== */
+.footer {
+    background-color: white;
+    border-top: 1px solid var(--border-color);
+    padding: 30px 0;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.reference-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+}
+
+.reference-link a {
+    color: var(--primary-hover);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   8. Responsive Design (มือถือและแท็บเล็ต)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 40px 0;
+    }
+
+    .info-card {
+        text-align: left;
+    }
+
+    .hero-img {
+        width: 250px;
+        height: 300px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 0;
+    }
+
+    .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+} /* <--- ปิดปีกกาของ @media ตรงนี้ให้ถูกต้อง */
+
+/* ==========================================================================
+   9. Dark Mode (ธีมมืด) 
+   ========================================================================== */
+
+/* ปรับแต่งปุ่มกดให้อีโมจิอยู่ตรงกลางสวยๆ */
+.theme-btn {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    padding: 0;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+    border-color: var(--primary-color);
+}
+
+/* เมื่อ body มีคลาส .dark-mode */
+body.dark-mode {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+
+    --primary-color: #38bdf8;
+    --primary-hover: #7dd3fc;
+
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.7);
+}
+
+/* --- บังคับเปลี่ยนสี Navbar และ Footer ตอนเป็น Dark Mode --- */
+body.dark-mode .navbar-header,
+body.dark-mode .footer,
+body.dark-mode .contact-section,
+body.dark-mode .gallery-info {
+    background-color: #1e293b;
+}
+
+body.dark-mode .navbar-header {
+    background-color: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* ปรับแต่งส่วนอื่นๆ เพิ่มเติมในโหมดมืด */
+body.dark-mode .btn-icon {
+    background-color: #334155;
+}
+
+body.dark-mode .assignment-btn {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 0 var(--border-color);
+}
+
+body.dark-mode .assignment-btn:hover .btn-icon {
+    background-color: #0c4a6e;
+}
+
+body.dark-mode .social-btn.email {
+    background-color: var(--primary-color);
+    color: #0f172a;
+}
+
+body.dark-mode .social-btn.email:hover {
+    background-color: var(--primary-hover);
+}
+
+body.dark-mode .reference-link {
+    background-color: var(--bg-color);
+}
