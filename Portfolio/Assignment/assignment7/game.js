@@ -114,6 +114,8 @@ function addBox(){
 	const gameLayer = document.getElementById("layer");
 	// ดึงค่าสีที่เลือกจากตัวเลือก Dropdown #color
 	const colorDrop = document.getElementById("color").value;
+	const layerWidth = gameLayer.offsetWidth;
+	const layerHeight = gameLayer.offsetHeight;
 	
 	// วนลูปสร้างกล่องตามจำนวน numbox ที่กำหนด
 	for (let i = 0; i < numbox; i++){
@@ -123,10 +125,8 @@ function addBox(){
 		tempbox.className = "square " + colorDrop;   
 		// กำหนด ID ให้แต่ละกล่องไม่ซ้ำกัน เช่น box0, box1, box2
 		tempbox.id = "box" + i;
-		// สุ่มตำแหน่งแนวนอน (left) ให้อยู่ในกรอบ 500x500px (หักลบขนาดกล่อง 25px)
-		tempbox.style.left = Math.random() * (500 - 25) + "px";
-		// สุ่มตำแหน่งแนวตั้ง (top) ให้อยู่ในกรอบ 500x500px (หักลบขนาดกล่อง 25px)
-		tempbox.style.top = Math.random() * (500 - 25) + "px";
+		tempbox.style.left = Math.random() * (layerWidth - 25) + "px";
+		tempbox.style.top = Math.random() * (layerHeight - 25) + "px";
 		
 		// เพิ่มโหนดกล่องสี่เหลี่ยมเข้าไปใน #layer เพื่อแสดงบนหน้าเว็บ
 		gameLayer.appendChild(tempbox);
@@ -135,7 +135,7 @@ function addBox(){
 
 // ฟังก์ชันสำหรับลบกล่องสี่เหลี่ยมทั้งหมดออกจากหน้าจอ
 function clearScreen(){
-	// ดึง NodeList ของกล่องสี่เหลี่ยม <div> ทั้งหมดภายใน #layer (สไลด์หน้า 29)
+	// ดึง NodeList ของกล่องสี่เหลี่ยม <div> ทั้งหมดภายใน #layer
 	const allbox = document.querySelectorAll("#layer div");
 	// วนลูปทีละกล่องเพื่อลบออกจากหน้าจอ
 	for (let i = 0; i < allbox.length; i++) {
