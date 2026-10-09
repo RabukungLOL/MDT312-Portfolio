@@ -133,9 +133,9 @@ button#start:active {
 }
 
 #layer {
-    position: relative;
-    width: 500px;
-    height: 500px;
+    width: 100%;           /* บนมือถือจะย่อขยายกว้างตามขอบจออัตโนมัติ */
+    max-width: 500px;      /* จำกัดความกว้างสูงสุดบนจอคอมไม่เกิน 500px */
+    aspect-ratio: 1 / 1;   /* รักษาสัดส่วน 1:1 ให้กล่องสูงเท่าความกว้างเสมอ */
     background-color: #ffffff;
     border: 3px solid #334e68;
     border-radius: 12px;
